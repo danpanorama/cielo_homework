@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Color</title>
+    <style>
+        .flexcol{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+        }
+    </style>
+</head>
+<body>
+ <div class="flexcol">
+    <label id="bg" for="backgroundcolor">Write The Background Color</label>
+    <input  type="text" name="backgroundcolor" id="back">
+    <label id="txt" for="textcolor">Write The Text Color</label>
+    <input type="text" name="textcolor" id="text">
+    <button id="click">change colors</button>
+
+ </div>
+
+    <script>
+        document.getElementById('click').addEventListener('click',(e)=>{
+           let bgcolor =  document.getElementById('back').value;
+           let txtcolor = document.getElementById('text').value;
+            document.getElementById('bg').style.backgroundColor = bgcolor;
+            document.getElementById('txt').style.color = txtcolor
+            
+
+            // אם אתה רוצה שכל הצבע של הטקסטים ישתנה תשתמש בזה 
+            // document.getElementById('bg').style.color = txtcolor
+
+
+        })
+    </script>
+    
+</body>
+</html>

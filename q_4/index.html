@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flexrow {
+        display: flex;
+        flex-direction: row;
+      }
+      .flexcol {
+        display: flex;
+        flex-direction: column;
+      }
+      .w400 {
+        max-width: 400px;
+      }
+      .center {
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      onsubmit="func1(); return false"
+      class="flexcol w400 center"
+      action=""
+    >
+      <div class="flexrow">
+        <input type="text" id="name" placeholder="name" />
+        <input type="text" id="lastname" placeholder="last name" />
+      </div>
+
+      <input type="text" id="email" placeholder="email" />
+      <textarea
+        name=""
+        id="msg"
+        placeholder="message"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <input type="text" id="color" placeholder="favorite color" />
+      <button type="submit">click</button>
+    </form>
+    <h1 id="colorres"></h1>
+    <h1 id="res"></h1>
+
+
+
+
+
+
+    <script>
+
+
+
+      function allLetter(inputtxt)
+
+            {
+
+            var letters = /^[A-Za-z]+$/;
+            if(inputtxt.match(letters))
+            {
+
+            return true;
+            }
+            else
+            {
+
+            return false;
+            }
+            }
+            function ValidateEmail(inputText){
+                    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    if(inputText.match(mailformat))
+                    {
+                    
+                  
+                    return true;
+                    }
+                    else
+                    {
+                   
+                  
+                    return false;
+                    }
+}
+
+
+
+              function func1(){
+                  let name = document.getElementById('name').value;
+                  let lastname = document.getElementById('lastname').value;
+                  let email = document.getElementById('email').value;
+                  let msg = document.getElementById('msg').value;
+                  let color = document.getElementById('color').value;
+                  let res = document.getElementById('res');
+                  let colorres = document.getElementById('colorres')
+                  let flag = true
+
+                  let rgbata=  printColor(color);
+                  let nameValidation = allLetter(name);
+                  let lastNameValidation = allLetter(lastname);
+                  let emailValidation = ValidateEmail(email);
+                  res.innerText = ''
+                  colorres.innerText = ''
+
+
+
+                   if(!nameValidation || !lastNameValidation){
+                      res.style.color = 'red'
+                       res.innerText += ',שם משתמש או שם משפחה אינם מתאימים'
+                       flag = false
+                   }else if(!emailValidation){
+                    res.style.color = 'red'
+                     res.innerText += ',כתובת אימייל לא חוקית'
+                     flag = false
+
+                   }
+
+
+                   if(color == 'red'){
+                    colorres.innerText += ',צבע חם'
+                   }
+                   else if(color == 'blue'){
+                    colorres.innerText += ',צבע קר'
+                   }else{
+                    colorres.innerText += ', תודה שבחרת צבע'
+                   }
+
+                   if(flag){
+                    res.style.color = 'green'
+                    res.innerText ='message has been sent '
+                   }
+
+
+
+
+            function printColor(ev) {
+                const color = ev
+                const r = parseInt(color.substr(1, 2), 16)
+                const g = parseInt(color.substr(3, 2), 16)
+                const b = parseInt(color.substr(5, 2), 16)
+                console.log(`red: ${r}, green: ${g}, blue: ${b}`)
+                console.log([r, g, b])
+                let arr = [r,g,b]
+                return arr
+
+            }
+
+
+              }
+    </script>
+  </body>
+</html>

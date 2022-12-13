@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>question 2</title>
+</head>
+<body>
+    <label for="user"> enter a user name</label>
+    <input type="text" name="user" id="user">
+    <button id="click">click</button>
+    <h1 class="result" id="result">
+
+    </h1>
+
+    <script>
+
+function allLetter(inputtxt)
+
+      { 
+        
+      var letters = /^[A-Za-z]+$/;
+      if(inputtxt.match(letters))
+      {
+      
+      return true;
+      }
+      else
+      {
+    
+      return false;
+      }
+      }
+
+
+        document.getElementById('click').addEventListener('click',()=>{
+            let name = document.getElementById('user').value;
+            let result = document.getElementById('result');
+            console.log(name)
+           let validation =  allLetter(name)
+
+            if(name == ''){
+                result.style.color = 'red'
+                return result.innerText = 'אנה הזן שם משתמש';
+            }
+
+            if(validation){
+                result.style.color = 'green'
+                return result.innerText = 'השם תקין ';
+            }else{
+                result.style.color = 'red'
+                return result.innerText = 'השם לא תקין ';
+            }
+           
+
+        })
+
+    </script>
+</body>
+</html>
